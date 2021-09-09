@@ -36,7 +36,7 @@ function play() {
 
 function getCurrentSong() {
   let currentSong = audioPlayer.src;
-  let currentSongName = currentSong.split("/")[4];
+  let currentSongName = currentSong.split("/")[5];
   let currentSongIndex = arrayOfSongs.findIndex(
     (e) => e.song == currentSongName,
   );
