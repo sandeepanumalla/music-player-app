@@ -2,16 +2,18 @@ const progressContainer = document.querySelector("#progress-container");
 const progressSlider = progressContainer.children[0];
 const durationWrapper = document.querySelector(".duration-wrapper");
 const playerControls = document.querySelector(".player-controls");
+const title = document.querySelector("#title");
 const audioPlayer = document.querySelector("audio");
 const previousButton = playerControls.children[0];
 const playButton = playerControls.children[1];
 const nextButton = playerControls.children[2];
 const imageContainer = document.querySelector(".img-container").children[0];
 const arrayOfSongs = [
-  { song: "jacinto-1.mp3", img: "jacinto-1.jpg" },
-  { song: "jacinto-2.mp3", img: "jacinto-2.jpg" },
-  { song: "jacinto-3.mp3", img: "jacinto-3.jpg" },
-  { song: "metric-1.mp3", img: "metric-1.jpg" },
+  { song: "Front_Row_(Remix).mp3", img: "metric-1.jpg" },
+  { song: "Electronic_Chill_Machine.mp3", img: "jacinto-1.jpg" },
+  { song: "Radnor_&_Lee_-_Doorstep.mp3", img: "metric-1.jpg" },
+  { song: "Goodnight_Disco_Queen.mp3", img: "jacinto-3.jpg" },
+  { song: "Seven_National_Army(Remix).mp3", img: "jacinto-2.jpg" },
 ];
 let isPlaying;
 
@@ -46,6 +48,7 @@ function getCurrentSong() {
 function sourceChange(currentSongIndex) {
   audioPlayer.src = "music/" + arrayOfSongs[currentSongIndex].song;
   imageContainer.src = "img/" + arrayOfSongs[currentSongIndex].img;
+  title.textContent = arrayOfSongs[currentSongIndex].song.split("_").join(" ");
   play();
 }
 
@@ -122,6 +125,12 @@ let mouseDown = false;
 progressContainer.addEventListener("mousedown", () => (mouseDown = true));
 progressContainer.addEventListener(
   "mousemove",
+  (e) => mouseDown && setProgressbar(e),
+);
+progressContainer.addEventListener("touchstart", () => (mouseDown = true));
+progressContainer.addEventListener("touchend", () => (mouseDown = false));
+progressContainer.addEventListener(
+  "touchmove",
   (e) => mouseDown && setProgressbar(e),
 );
 progressContainer.addEventListener("mouseup", () => (mouseDown = false));
