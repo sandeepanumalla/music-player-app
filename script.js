@@ -122,7 +122,10 @@ function setProgressbar(e) {
   audioPlayer.currentTime = timeInSeconds;
 }
 let mouseDown = false;
-progressContainer.addEventListener("mousedown", () => (mouseDown = true));
+progressContainer.addEventListener("mousedown", (e) => {
+  mouseDown = true;
+  mouseDown && setProgressbar(e);
+});
 progressContainer.addEventListener(
   "mousemove",
   (e) => mouseDown && setProgressbar(e),
