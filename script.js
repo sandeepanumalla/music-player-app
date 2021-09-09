@@ -48,7 +48,10 @@ function getCurrentSong() {
 function sourceChange(currentSongIndex) {
   audioPlayer.src = "music/" + arrayOfSongs[currentSongIndex].song;
   imageContainer.src = "img/" + arrayOfSongs[currentSongIndex].img;
-  title.textContent = arrayOfSongs[currentSongIndex].song.split("_").join(" ");
+  title.textContent = arrayOfSongs[currentSongIndex].song
+    .split("_")
+    .join(" ")
+    .split(".")[0];
   play();
 }
 
