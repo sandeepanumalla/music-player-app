@@ -40,6 +40,7 @@ function getCurrentSong() {
   let currentSongIndex = arrayOfSongs.findIndex(
     (e) => e.song == currentSongName,
   );
+  console.log(currentSongName, currentSongIndex);
   return currentSongIndex;
 }
 function sourceChange(currentSongIndex) {
